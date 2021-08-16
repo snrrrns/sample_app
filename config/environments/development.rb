@@ -33,6 +33,12 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
+  
+  host = '7d5b79e836624fb9a344742897b00e30.vfs.cloud9.us-east-2.amazonaws.com' # ここをコピペすると失敗します。自分の環境のホストに変えてください。
+  # クラウドIDEの場合は以下をお使いください
+  config.action_mailer.default_url_options = { host: host, protocol: 'https' }
+  # localhostで開発している場合は以下をお使いください
+  # config.action_mailer.default_url_options = { host: host, protocol: 'http' }
 
   config.action_mailer.perform_caching = false
 
@@ -60,6 +66,6 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   
-  # Cloud9 への接続を許可する
+  # ホワイトリスト全体をクリア
   config.hosts.clear
 end
